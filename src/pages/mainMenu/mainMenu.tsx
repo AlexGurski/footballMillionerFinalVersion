@@ -15,6 +15,9 @@ const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
 }) => {
   //   const startGame = () => navigation.navigate("StartGame");
 
+  const goTo = (page: string) => {
+    navigation.navigate(page);
+  };
   return (
     <ImageBackground source={backgroundIMG} resizeMode="cover">
       <SafeAreaView style={styles.allForm}>
@@ -23,7 +26,7 @@ const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
             <Text>Марафон</Text>
           </TouchableOpacity> */}
 
-          <TouchableOpacity style={styles.buttons}>
+          <TouchableOpacity style={styles.buttons} onPress={() => goTo("Game")}>
             <Text>Кто хочет стать миллионером</Text>
           </TouchableOpacity>
 
