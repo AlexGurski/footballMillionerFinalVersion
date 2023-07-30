@@ -34,16 +34,4 @@ export const styles = StyleSheet.create({
     borderStyle: 'dashed',
     borderWidth:2,
   },
-  select:{
-    backgroundColor:'orange',
-  },
-  default:{
-    backgroundColor:'white',
-  },
-  true:{
-    backgroundColor:'green',
-  },
-  mistake:{
-    backgroundColor:'red',
-  }
 });

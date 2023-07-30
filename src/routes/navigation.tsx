@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Main from "../pages/mainMenu/mainMenu";
 import Game from "../pages/game/Game";
+import LoadRound from "../pages/loadRound/LoadRound"
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,11 @@ export default function Navigate() {
         <Stack.Screen
           name="Main"
           component={Main}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="LoadRound"
+          component={LoadRound}
           options={{ headerShown: false }}
         />
         <Stack.Screen

@@ -18,6 +18,8 @@ const Game: React.FC<{ navigation: NavigationProp<any> }> = ({
 }) => {
   const [easyQuestions, setEasyQuestions] = useState<any[]>([]);
   const [counter, setCounter] = useState<number>(0);
+  const [currentSelect, setCurrenSelect] = useState<string>("");
+  const [endTimeout, setEndTimeout] = useState<boolean>(false);
   useEffect(() => {
     const questionArray: any[] = generateUniqueRandomNumbers(
       5,
@@ -44,30 +46,59 @@ const Game: React.FC<{ navigation: NavigationProp<any> }> = ({
 
   const nextQuestion = () => {
     setCounter((count) => count + 1);
+    setCurrenSelect("");
+    setEndTimeout(false);
   };
 
   const sendAnswer = (answer: string) => {
-    if (easyQuestions[counter].true === answer){
-      nextQuestion();
-    }
+    setCurrenSelect(answer);
+    const timer = setTimeout(() => {
+      setEndTimeout(true);
+      const timer1 = setTimeout(() => {
+        // if (easyQuestions[counter].true === answer) {
+        //   nextQuestion();
+        // }
+        nextQuestion();
+        clearTimeout(timer1);
+        clearTimeout(timer);
+      }, 1500);
+    }, 1500);
   };
 
   return (
     <ImageBackground source={backgroundIMG} resizeMode="cover">
       <SafeAreaView style={styles.allForm}>
         {easyQuestions.length > 0 && counter < easyQuestions.length && (
-          <View>
-            <Text>{easyQuestions[counter].vopros}</Text>
-            {easyQuestions[counter].choise.map(
-              (question: string, index: number) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => sendAnswer(question)}
-                >
-                  <Text>{question}</Text>
-                </TouchableOpacity>
-              )
-            )}
+          <View style={styles.wrapper}>
+            <View style={styles.question}>
+              <Text>{easyQuestions[counter].vopros}</Text>
+            </View>
+
+            <View style={styles.container}>
+              {easyQuestions[counter].choise.map(
+                (question: string, index: number) => (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => sendAnswer(question)}
+                    style={[
+                      styles.choise,
+                      currentSelect === question &&
+                        !endTimeout &&
+                        styles.select,
+                      easyQuestions[counter].true === question &&
+                        endTimeout &&
+                        styles.true,
+                      easyQuestions[counter].true !== question &&
+                        currentSelect === question &&
+                        endTimeout &&
+                        styles.mistake,
+                    ]}
+                  >
+                    <Text>{question}</Text>
+                  </TouchableOpacity>
+                )
+              )}
+            </View>
           </View>
         )}
       </SafeAreaView>

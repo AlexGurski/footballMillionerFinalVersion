@@ -16,17 +16,15 @@ const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
   //   const startGame = () => navigation.navigate("StartGame");
 
   const goTo = (page: string) => {
-    navigation.navigate(page);
+    navigation.navigate('LoadRound', {game: page});
   };
+
   return (
     <ImageBackground source={backgroundIMG} resizeMode="cover">
       <SafeAreaView style={styles.allForm}>
         <View style={styles.buttonsContainer}>
-          {/* <TouchableOpacity style={styles.buttons} onPress={() => startGame()}>
-            <Text>Марафон</Text>
-          </TouchableOpacity> */}
 
-          <TouchableOpacity style={styles.buttons} onPress={() => goTo("Game")}>
+          <TouchableOpacity style={styles.buttons} onPress={() => goTo("millioner")}>
             <Text>Кто хочет стать миллионером</Text>
           </TouchableOpacity>
 
