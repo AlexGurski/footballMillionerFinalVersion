@@ -15,14 +15,13 @@ import { getQuestions } from "../../functions/getQuestions";
 type Game = NativeStackScreenProps<RootStackParamList, "Game">;
 
 const Game: React.FC<Game> = ({ navigation, route }) => {
-  const [easyQuestions, setEasyQuestions] = useState<any[]>([]);
+  const [questionsList, setQuestionsList] = useState<any[]>([]);
   const [counter, setCounter] = useState<number>(0);
   const [currentSelect, setCurrenSelect] = useState<string>("");
   const [endTimeout, setEndTimeout] = useState<boolean>(false);
 
   useEffect(() => {
-    getQuestions(route.params.game)
-    setEasyQuestions(getQuestions(route.params.game))
+    setQuestionsList(getQuestions(route.params.game))
   },[])
 
   const nextQuestion = () => {
@@ -36,7 +35,7 @@ const Game: React.FC<Game> = ({ navigation, route }) => {
     const timer = setTimeout(() => {
       setEndTimeout(true);
       const timer1 = setTimeout(() => {
-        if (easyQuestions[counter].true === answer) {
+        if (questionsList[counter].true === answer) {
           nextQuestion();
         }
         nextQuestion();
@@ -49,14 +48,14 @@ const Game: React.FC<Game> = ({ navigation, route }) => {
   return (
     <ImageBackground source={backgroundIMG} resizeMode="cover">
       <SafeAreaView style={styles.allForm}>
-        {easyQuestions.length > 0 && counter < easyQuestions.length && (
+        {questionsList.length > 0 && counter < questionsList.length && (
           <View style={styles.wrapper}>
             <View style={styles.question}>
-              <Text>{easyQuestions[counter].vopros}</Text>
+              <Text>{questionsList[counter].vopros}</Text>
             </View>
 
             <View style={styles.container}>
-              {easyQuestions[counter].choise.map(
+              {questionsList[counter].choise.map(
                 (question: string, index: number) => (
                   <TouchableOpacity
                     key={index}
@@ -66,10 +65,10 @@ const Game: React.FC<Game> = ({ navigation, route }) => {
                       currentSelect === question &&
                         !endTimeout &&
                         styles.select,
-                      easyQuestions[counter].true === question &&
+                        questionsList[counter].true === question &&
                         endTimeout &&
                         styles.true,
-                      easyQuestions[counter].true !== question &&
+                        questionsList[counter].true !== question &&
                         currentSelect === question &&
                         endTimeout &&
                         styles.mistake,
