@@ -1,7 +1,7 @@
 export const questionsMiddle = [
   {
     id: 1,
-    quest:
+    vopros:
       "Какую разновидность футбола придумал финский лыжник Эса Ромппайнен?",
     true: "Болотный",
     varA: "Пляжный",

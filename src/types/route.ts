@@ -1,8 +1,6 @@
-export type Game = {
-    game: string;
-}
 export type RootStackParamList = {
-    LoadRound: {
-        game: string;
-    };
+    Game:{
+        game:string;
+        questions:any[];
+    }
   };

@@ -3,46 +3,27 @@ import {
   SafeAreaView,
   View,
   Text,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import backgroundIMG from "../../assets/images/jpg/gameBackground.jpeg";
 import { styles } from "./style";
-import { NavigationProp } from "@react-navigation/native";
-import { questionEasy } from "../../base/questions/easy";
-import { generateUniqueRandomNumbers } from "../../functions/random";
-import { shuffleArray } from "../../functions/shuffleArray";
-const Game: React.FC<{ navigation: NavigationProp<any> }> = ({
-  navigation,
-}) => {
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../types/route";
+import { getQuestions } from "../../functions/getQuestions";
+
+type Game = NativeStackScreenProps<RootStackParamList, "Game">;
+
+const Game: React.FC<Game> = ({ navigation, route }) => {
   const [easyQuestions, setEasyQuestions] = useState<any[]>([]);
   const [counter, setCounter] = useState<number>(0);
   const [currentSelect, setCurrenSelect] = useState<string>("");
   const [endTimeout, setEndTimeout] = useState<boolean>(false);
+
   useEffect(() => {
-    const questionArray: any[] = generateUniqueRandomNumbers(
-      5,
-      1,
-      questionEasy.length - 1
-    );
-    if (questionArray && questionArray.length > 0) {
-      setEasyQuestions(
-        questionArray.map((el: number) => {
-          return {
-            vopros: questionEasy[el].vopros,
-            true: questionEasy[el].trues,
-            choise: shuffleArray([
-              questionEasy[el].vB,
-              questionEasy[el].vC,
-              questionEasy[el].vD,
-              questionEasy[el].trues,
-            ]),
-          };
-        })
-      );
-    }
-  }, []);
+    getQuestions(route.params.game)
+    setEasyQuestions(getQuestions(route.params.game))
+  },[])
 
   const nextQuestion = () => {
     setCounter((count) => count + 1);
@@ -55,9 +36,9 @@ const Game: React.FC<{ navigation: NavigationProp<any> }> = ({
     const timer = setTimeout(() => {
       setEndTimeout(true);
       const timer1 = setTimeout(() => {
-        // if (easyQuestions[counter].true === answer) {
-        //   nextQuestion();
-        // }
+        if (easyQuestions[counter].true === answer) {
+          nextQuestion();
+        }
         nextQuestion();
         clearTimeout(timer1);
         clearTimeout(timer);

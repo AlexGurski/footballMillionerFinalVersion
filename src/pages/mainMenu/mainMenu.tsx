@@ -16,7 +16,7 @@ const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
   //   const startGame = () => navigation.navigate("StartGame");
 
   const goTo = (page: string) => {
-    navigation.navigate('LoadRound', {game: page});
+    navigation.navigate('Game', {game: page});
   };
 
   return (
