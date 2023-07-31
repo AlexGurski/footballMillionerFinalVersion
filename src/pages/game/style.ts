@@ -8,42 +8,57 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  container:{
+  container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent:'space-between',
-    gap:20,
+    justifyContent: "space-between",
+    gap: 20,
   },
-  wrapper:{
-    flex:1,
-    paddingHorizontal:20,
-    borderColor:'red',
-    borderStyle: 'dashed',
-    borderWidth:2,
+  wrapper: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
-  question:{
-    height:'60%',
-    alignItems:'center',
-    justifyContent:'center',
+  header: {
+    position: "absolute",
+    top: 0,
+    height: 40,
+    width: "100%",
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 5,
   },
-  choise:{
-    width:'40%',
-    paddingVertical:10,
-    paddingHorizontal:20,
-    borderColor:'red',
-    borderStyle: 'dashed',
-    borderWidth:2,
+  progres: {
+    height: "100%",
+    borderColor: "#333333",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderRadius:6,
+    padding:3,
   },
-  select:{
-    backgroundColor:'orange',
+  percent: {},
+  question: {
+    height: "60%",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  default:{
-    backgroundColor:'white',
+  choise: {
+    width: "40%",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderColor: "red",
+    borderStyle: "dashed",
+    borderWidth: 2,
   },
-  true:{
-    backgroundColor:'green',
+  select: {
+    backgroundColor: "orange",
   },
-  mistake:{
-    backgroundColor:'red',
-  }
+  default: {
+    backgroundColor: "white",
+  },
+  true: {
+    backgroundColor: "green",
+  },
+  mistake: {
+    backgroundColor: "red",
+  },
 });

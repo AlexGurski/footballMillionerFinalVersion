@@ -11,19 +11,21 @@ import { styles } from "./style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../types/route";
 import { getQuestions } from "../../functions/getQuestions";
+import { QuestionsForGame } from "../../types/questions";
 
 type Game = NativeStackScreenProps<RootStackParamList, "Game">;
 
 const Game: React.FC<Game> = ({ navigation, route }) => {
-  const [questionsList, setQuestionsList] = useState<any[]>([]);
+  const [questionsList, setQuestionsList] = useState<QuestionsForGame[]>([]);
   const [counter, setCounter] = useState<number>(0);
   const [currentSelect, setCurrenSelect] = useState<string>("");
   const [endTimeout, setEndTimeout] = useState<boolean>(false);
 
   useEffect(() => {
-    setQuestionsList(getQuestions(route.params.game))
+    setQuestionsList(getQuestions(route.params.gameName))
   },[])
 
+  
   const nextQuestion = () => {
     setCounter((count) => count + 1);
     setCurrenSelect("");
@@ -48,6 +50,18 @@ const Game: React.FC<Game> = ({ navigation, route }) => {
   return (
     <ImageBackground source={backgroundIMG} resizeMode="cover">
       <SafeAreaView style={styles.allForm}>
+        <View style={styles.header}>
+          <View style={styles.progres}>
+            <View style={{
+              width: `${(counter) / questionsList.length * 100}%`,
+              height:'100%',
+              backgroundColor:'gold',
+              borderRadius:6,
+            }}>
+              {/* <Text>{counter} / {questionsList.length}</Text> */}
+            </View>
+          </View>
+        </View>
         {questionsList.length > 0 && counter < questionsList.length && (
           <View style={styles.wrapper}>
             <View style={styles.question}>

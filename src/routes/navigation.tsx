@@ -20,7 +20,7 @@ export default function Navigate() {
         <Stack.Screen
           name="Game"
           component={Game}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>

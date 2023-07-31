@@ -1,4 +1,6 @@
-export const questionEasy = [
+import { QuestionDefault } from "../../types/questions";
+
+export const questionEasy:QuestionDefault[] = [
   {
     _id: 14,
     vopros:
@@ -200,7 +202,7 @@ export const questionEasy = [
     vB: "Испания",
     vC: "Италия",
     vD: "Бразилия",
-    trues: "Аргентина",
+    trues: "Англия",
   },
   {
     _id: 21,

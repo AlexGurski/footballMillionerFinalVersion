@@ -13,10 +13,8 @@ import { NavigationProp } from "@react-navigation/native";
 const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
   navigation,
 }) => {
-  //   const startGame = () => navigation.navigate("StartGame");
-
   const goTo = (page: string) => {
-    navigation.navigate("Game", { game: page });
+    navigation.navigate("Game", { gameName: page });
   };
 
   return (
@@ -33,7 +31,7 @@ const Main: React.FC<{ navigation: NavigationProp<any> }> = ({
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttons}
-            onPress={() => goTo("millioner")}
+            onPress={() => goTo("survivor")}
           >
             <View style={styles.buttons__container}>
               <Text>Выживание</Text>

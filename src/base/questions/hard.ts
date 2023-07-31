@@ -1,4 +1,6 @@
-export const questionsHard = [
+import { QuestionDefault } from "../../types/questions";
+
+export const questionsHard:QuestionDefault[] = [
   {
     _id: 43,
     vopros: "Кто стал чемпионом России по футболу в 2010 году?",
@@ -832,5 +834,12 @@ export const questionsHard = [
     vC: "Второе место",
     vD: "Полуфинал",
     trues: "Четвертьфинал",
+  },
+  {
+    vopros: "Кто был первым  победителем  Кубка УЕФА?",
+    vB: "Ливерпуль",
+    vC: "Сандерденд",
+    vD: "Ференцварош",
+    trues: "Тоттенхэм Хотспур",
   },
 ];
