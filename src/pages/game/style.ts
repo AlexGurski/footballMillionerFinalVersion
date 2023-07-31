@@ -8,12 +8,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    gap: 20,
-  },
   wrapper: {
     flex: 1,
     paddingHorizontal: 20,
@@ -40,25 +34,5 @@ export const styles = StyleSheet.create({
     height: "60%",
     alignItems: "center",
     justifyContent: "center",
-  },
-  choise: {
-    width: "40%",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderColor: "red",
-    borderStyle: "dashed",
-    borderWidth: 2,
-  },
-  select: {
-    backgroundColor: "orange",
-  },
-  default: {
-    backgroundColor: "white",
-  },
-  true: {
-    backgroundColor: "green",
-  },
-  mistake: {
-    backgroundColor: "red",
   },
 });

@@ -1,5 +1,6 @@
 export type RootStackParamList = {
-    Game:{
-        gameName:string;
-    }
+  Game: {
+    gameName: "millioner" | "survivor";
   };
+  Main: {};
+};
